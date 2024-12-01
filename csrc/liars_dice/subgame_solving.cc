@@ -15,6 +15,7 @@
 #include "subgame_solving.h"
 
 #include <algorithm>
+#include <fstream>
 #include <memory>
 #include <numeric>
 #include <stdexcept>

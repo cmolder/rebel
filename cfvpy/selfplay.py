@@ -18,7 +18,7 @@ import pathlib
 import os
 import time
 
-import pytorch_lightning.logging as pl_logging
+from pytorch_lightning.loggers import CSVLogger
 import omegaconf
 import torch
 import tqdm
@@ -183,7 +183,7 @@ class CFVExp:
         # Need to preserve ownership of the ref models!
         ref_models = []
         model_lockers = []
-        assert torch.cuda.device_count() >= 2, torch.cuda.device_count()
+        # assert torch.cuda.device_count() >= 2, torch.cuda.device_count()
         if self.cfg.selfplay.cpu_gen_threads:
             num_threads = self.cfg.selfplay.cpu_gen_threads
             act_devices = ["cpu"] * num_threads
@@ -262,7 +262,7 @@ class CFVExp:
     def run_trainer(self):
         # Fix version so that training always continues.
         if self.is_master:
-            logger = pl_logging.TestTubeLogger(save_dir=os.getcwd(), version=0)
+            logger = CSVLogger(save_dir=os.getcwd(), version=0)
 
         # Storing the whole dict to preserve ref_models.
         datagen = self.initialize_datagen()

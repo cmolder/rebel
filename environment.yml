@@ -1,0 +1,29 @@
+# Conda environment for ReBeL.
+#
+# Use this instead of pip install -r requirements.txt
+
+name: rebel
+channels:
+  - conda-forge
+  - pytorch
+  - nvidia
+dependencies:
+  - black
+  - gcc=13
+  - gxx=13
+  - ipython
+  - nose
+  - omegaconf=1.4
+  - pandas
+  - pip
+  - python=3.11
+  - pybind11
+  - pytorch
+  - pytorch-cuda
+  - pytorch-lightning
+  - submitit
+  - torchmetrics
+  - tqdm
+  - pip:
+    - -e git+https://github.com/akhti/hydra.git#egg=hydra-core
+    # - -e git+https://github.com/akhti/pytorch-lightning.git#egg=pytorch-lightning
